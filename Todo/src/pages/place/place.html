@@ -1,0 +1,29 @@
+
+<ion-header>
+  
+  <ion-navbar>
+    <ion-buttons >
+      <button  (click)="onClose()" ion-button icon-only>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    
+    <ion-buttons end>
+      <button (click)="removeItem(key)" ion-button icon-only>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <button ion-button ion-mini color="light" round>Edit</button>
+
+  <h2>{{ title }}</h2>
+  <p>
+    {{ note }}
+  </p>
+</ion-content>

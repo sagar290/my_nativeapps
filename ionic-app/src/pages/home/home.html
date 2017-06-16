@@ -1,0 +1,45 @@
+
+<ion-content padding>
+
+  <ion-card>
+    <ion-card-content>
+      <button ion-button (click)="watch()" >Get Location</button>
+      <p>position: {{ coords }}</p>
+      <p>Accuracy: {{ accuracy }} </p>
+      <p *ngIf="error"> {{ error }} </p>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+
+    <ion-card-content>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      <button ion-button block="true" outline="true" color="danger">button</button>
+      <button ion-button block="true">button</button>
+      <button ion-fab mini>+</button>
+    </ion-card-content>
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <ion-item>
+        <ion-label>Topping</ion-label>
+        <ion-select [(ngModel)]="toppings" multiple="true" #tops>
+          <ion-option>Bacon</ion-option>
+          <ion-option>black olivs</ion-option>
+          <ion-option>extra csese</ion-option>
+        </ion-select>
+      </ion-item>
+      <button ion-button (click)="openIt(tops)" >Select</button>
+    </ion-card-content>
+    
+
+  </ion-card>
+
+  <ion-card>
+    <ion-card-content>
+      <button ion-button (click)="alertIt(tops)" >Alert</button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
