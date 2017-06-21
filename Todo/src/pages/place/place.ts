@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { NavController } from "ionic-angular";
 
 import { ViewController, NavParams } from 'ionic-angular';
 
@@ -10,15 +11,18 @@ import { ViewController, NavParams } from 'ionic-angular';
 export class PlacePage {
   title:string;
   note: string;
+  index: number;
 
   constructor(
     private ViewCtrl: ViewController,
     private NavParams: NavParams,
-    private storage: Storage
+    private storage: Storage,
+    private navCtrl: NavController
     ) {
 
       this.title = this.NavParams.data.title;
       this.note = this.NavParams.data.note;
+      this.index = this.NavParams.data.index;
   }
 
   ionViewDidLoad() {
@@ -26,11 +30,11 @@ export class PlacePage {
   }
 
   onClose() {
-    this.ViewCtrl.dismiss();
+    this.navCtrl.pop();
   }
 
-  removeItem(key) {
-    localStorage.removeItem(key);
+  RemoveItem(key) {
+    console.log(key);
   }
 
 }

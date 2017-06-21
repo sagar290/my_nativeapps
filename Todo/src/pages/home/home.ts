@@ -5,6 +5,7 @@ import { ModalController, NavController } from 'ionic-angular';
 import { NewPlacePage } from "../new-place/new-place";
 import { PlacePage } from "../place/place";
 
+
 import { PlacesService } from "../../services/place.services";
 import { Place } from "../../model/place.model"
 
@@ -29,6 +30,8 @@ export class HomePage {
     .then(
       (places) => {
         this.places = places;
+        console.log(places);
+        
       }
     );
   }
@@ -38,7 +41,15 @@ export class HomePage {
   }
 
   onOpenPlace(place: Place) {
-    this.ModalCtrl.create(PlacePage, place).present();
+    this.navCtrl.push(PlacePage, place);
+  }
+
+  Remove(index) {
+      this.storage.get('places').then((places) => {
+        places.splice(index, 1);   
+        this.storage.set('places', places);
+        this.navCtrl.push(HomePage);
+    });
   }
 
 }
