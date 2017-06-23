@@ -4,6 +4,8 @@ import { NavController } from "ionic-angular";
 
 import { ViewController, NavParams } from 'ionic-angular';
 
+// import { HomePage } from '../home/home';
+
 @Component({
   selector: 'page-place',
   templateUrl: 'place.html',
@@ -11,6 +13,7 @@ import { ViewController, NavParams } from 'ionic-angular';
 export class PlacePage {
   title:string;
   note: string;
+  id: number;
   index: number;
 
   constructor(
@@ -20,9 +23,12 @@ export class PlacePage {
     private navCtrl: NavController
     ) {
 
-      this.title = this.NavParams.data.title;
-      this.note = this.NavParams.data.note;
+      this.title = this.NavParams.data.place.title;
+      this.note = this.NavParams.data.place.note;
+      this.id = this.NavParams.data.place.id;
       this.index = this.NavParams.data.index;
+      console.log(this.NavParams.data);
+
   }
 
   ionViewDidLoad() {
@@ -33,8 +39,12 @@ export class PlacePage {
     this.navCtrl.pop();
   }
 
-  RemoveItem(key) {
-    console.log(key);
+  RemoveItem(index) {
+    this.storage.get('places').then((places) => {
+        places.splice(index, 1); 
+        this.storage.set('places', places);
+        this.navCtrl.pop();
+    });
   }
 
 }

@@ -15,6 +15,7 @@ import { Place } from "../../model/place.model"
 })
 export class HomePage {
   places: {title: string}[] = [];
+  index: {i: number};
 
   constructor(
     public navCtrl: NavController, 
@@ -31,7 +32,7 @@ export class HomePage {
       (places) => {
         this.places = places;
         console.log(places);
-        
+
       }
     );
   }
@@ -40,8 +41,15 @@ export class HomePage {
     this.navCtrl.push(NewPlacePage);
   }
 
-  onOpenPlace(place: Place) {
-    this.navCtrl.push(PlacePage, place);
+
+  getIndex() {
+    var index = 'something';
+    return index;
+  }
+
+  onOpenPlace(place: Place, i ) {
+    // this.index.i = i;
+    this.navCtrl.push(PlacePage, {place, index: i });
   }
 
   Remove(index) {

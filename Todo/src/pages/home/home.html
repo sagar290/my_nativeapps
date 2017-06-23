@@ -16,7 +16,7 @@
   <ion-list>
     <ion-item-sliding *ngFor="let place of places let i = index"  [attr.data-index]="i">
       
-        <ion-item (click)="onOpenPlace(place)">
+        <ion-item (click)="onOpenPlace(place, i)">
           <h2>{{ i }}. {{place.title }}</h2>
         </ion-item>
       
