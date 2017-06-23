@@ -13,6 +13,8 @@ import { Place } from "../../model/place.model"
   selector: 'page-home',
   templateUrl: 'home.html'
 })
+
+
 export class HomePage {
   places: {title: string}[] = [];
   index: {i: number};

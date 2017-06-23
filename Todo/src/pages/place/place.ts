@@ -3,6 +3,8 @@ import { Storage } from '@ionic/storage';
 import { NavController } from "ionic-angular";
 
 import { ViewController, NavParams } from 'ionic-angular';
+import { PlacesService } from "../../services/place.services";
+
 
 // import { HomePage } from '../home/home';
 
@@ -20,7 +22,8 @@ export class PlacePage {
     private ViewCtrl: ViewController,
     private NavParams: NavParams,
     private storage: Storage,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private placesService: PlacesService
     ) {
 
       this.title = this.NavParams.data.place.title;
@@ -33,6 +36,16 @@ export class PlacePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PlacePage');
+  }
+
+  editNote(value: {title: string, note: string}, index) {
+    this.storage.get('places').then((places) => {
+        this.id = places == null ? places.length  -1 : places.length;
+        places.splice(index, 1);
+        places.push({id: this.id, title: value.title, note: value.note }); 
+        this.storage.set('places', places);
+        this.navCtrl.pop();
+    });
   }
 
   onClose() {

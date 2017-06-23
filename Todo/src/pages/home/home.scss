@@ -4,4 +4,12 @@ page-home {
         bottom: 100px;
         right: 31px;
     }
+
+    ion-list {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+    ion-item-sliding {
+        flex: 0 0 auto;
+    }
 }

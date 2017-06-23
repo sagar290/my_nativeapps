@@ -1,28 +1,27 @@
 
 <ion-header>
   
-  <ion-navbar>
-
-    <button  ion-button color="danger" (click)="RemoveItem(index)" ><ion-icon name="trash" ></ion-icon></button>
-    
-  </ion-navbar>
+  <ion-navbar></ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
 
-<h2>
-  {{
-    title
-  }}
-</h2>
-<p>  {{ index }}   </p>
-<p>
-  {{
-    note
-  }}
-</p>
+<form (ngSubmit)="editNote(f.value, index)" #f="ngForm">
+    <ion-item>
+      <ion-label color="primary" floating>Title</ion-label>
+      <ion-input type="text" name="title" [(ngModel)]="title" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label color="primary" floating >Write note</ion-label>
+      <ion-textarea name="note" [(ngModel)]="note" > {{ note }} </ion-textarea>
+    </ion-item>
+    <button ion-button block type="submit" [disabled]="!f.valid">Add Note</button>
+</form>
+
+  
+
 
 
 </ion-content>
