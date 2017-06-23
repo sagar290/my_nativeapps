@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 
-import { ModalController, NavController } from 'ionic-angular';
+import { ModalController, NavController, ToastController } from 'ionic-angular';
 import { NewPlacePage } from "../new-place/new-place";
 import { PlacePage } from "../place/place";
 
@@ -23,7 +23,8 @@ export class HomePage {
     public navCtrl: NavController, 
     private placesService: PlacesService, 
     public storage: Storage,
-    public ModalCtrl: ModalController
+    public ModalCtrl: ModalController,
+    private toastCtrl: ToastController
     ) {
 
   }
@@ -33,7 +34,7 @@ export class HomePage {
     .then(
       (places) => {
         this.places = places;
-        console.log(places);
+        // console.log(places);
 
       }
     );
@@ -50,7 +51,7 @@ export class HomePage {
   }
 
   onOpenPlace(place: Place, i ) {
-    // this.index.i = i;
+
     this.navCtrl.push(PlacePage, {place, index: i });
   }
 
@@ -59,6 +60,7 @@ export class HomePage {
         places.splice(index, 1);   
         this.storage.set('places', places);
         this.navCtrl.push(HomePage);
+        this.navCtrl.pop();
     });
   }
 

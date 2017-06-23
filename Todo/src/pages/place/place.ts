@@ -30,7 +30,7 @@ export class PlacePage {
       this.note = this.NavParams.data.place.note;
       this.id = this.NavParams.data.place.id;
       this.index = this.NavParams.data.index;
-      console.log(this.NavParams.data);
+      // console.log(this.NavParams.data);
 
   }
 
@@ -45,6 +45,7 @@ export class PlacePage {
         places.push({id: this.id, title: value.title, note: value.note }); 
         this.storage.set('places', places);
         this.navCtrl.pop();
+        this.placesService.presentToast('Note updated', 3000, 'middle');
     });
   }
 

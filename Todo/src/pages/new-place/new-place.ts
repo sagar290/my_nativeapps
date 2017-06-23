@@ -26,6 +26,7 @@ export class NewPlacePage {
   onAddPlace(value: {title: string, note: string}) {
     this.placesService.addPlace({id: this.id, title: value.title, note: value.note });
     this.navCtrl.pop();
+    this.placesService.presentToast('Note Added', 3000, 'middle');
   }
 
 }

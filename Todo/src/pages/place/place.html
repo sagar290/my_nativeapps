@@ -1,7 +1,13 @@
 
 <ion-header>
   
-  <ion-navbar></ion-navbar>
+  <ion-navbar>
+    <ion-buttons end>
+      <button (click)="RemoveItem(index)"  ion-button icon-only>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
 
 </ion-header>
 
@@ -17,7 +23,7 @@
       <ion-label color="primary" floating >Write note</ion-label>
       <ion-textarea name="note" [(ngModel)]="note" > {{ note }} </ion-textarea>
     </ion-item>
-    <button ion-button block type="submit" [disabled]="!f.valid">Add Note</button>
+    <button ion-button block type="submit" [disabled]="!f.valid">Edit Note</button>
 </form>
 
   

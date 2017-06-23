@@ -1,12 +1,13 @@
 import { Storage } from '@ionic/storage';
 import { Injectable } from '@angular/core';
-import { Place } from '../model/place.model'
+import { Place } from '../model/place.model';
+import {  ToastController } from 'ionic-angular';
 
 @Injectable()
 export class PlacesService {
   private places: Place[] = [];
 
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, private toastCtrl: ToastController) {
       
   }
 
@@ -23,5 +24,15 @@ export class PlacesService {
             return this.places.slice();
         }
     )
+  }
+
+  presentToast(message: string, duration: number, position: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: duration,
+      position: position
+    });
+
+    toast.present();
   }
 }

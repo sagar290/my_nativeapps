@@ -11,5 +11,15 @@ page-home {
     }
     ion-item-sliding {
         flex: 0 0 auto;
+        border-bottom: none;
     }
+
+    .list-md .item-block .item-inner, ios > .item-wrapper:last-child .item-block{
+        border: none;
+    }
+
+    .list-md .item-block .item-inner, ios > .item-wrapper:last-child .item-block {
+        border: none;
+    }
+    
 }
