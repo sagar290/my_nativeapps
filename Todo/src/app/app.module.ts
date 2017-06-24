@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { IonicStorageModule } from '@ionic/storage';
 import { MyApp } from './app.component';
-
+import { AdMob } from '@ionic-native/admob';
 import { HomePage } from '../pages/home/home';
 import { PlacePage } from '../pages/place/place';
 import { NewPlacePage } from '../pages/new-place/new-place';
@@ -37,6 +37,7 @@ import { PlacesService } from '../services/place.services';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     PlacesService,
     IonicStorageModule,
+    AdMob
   ]
 })
 export class AppModule {}

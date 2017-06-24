@@ -13,8 +13,8 @@
 
 <ion-content padding>
   
-  <ion-list >
-    <ion-item-sliding *ngFor="let place of places  let i = index "  [attr.data-index]="i">
+  <!--<ion-list >
+    <ion-item *ngFor="let place of places  let i = index "  [attr.data-index]="i">
       
         <ion-item (click)="onOpenPlace(place, i)">
           <h2>{{place.title }}</h2>
@@ -24,9 +24,15 @@
       <ion-item-options side="right">
         <button  ion-button color="danger" (click)="Remove(i)" ><ion-icon name="trash" ></ion-icon></button>
       </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+        
+    </ion-item>
+  </ion-list>-->
 
+    <ion-card *ngFor="let place of places  let i = index "  [attr.data-index]="i">
+      <ion-card-content (click)="onOpenPlace(place, i)">
+        <h1>{{place.title }}</h1>
+      </ion-card-content>
+    </ion-card>
 
 
   <ion-fab id="add">
