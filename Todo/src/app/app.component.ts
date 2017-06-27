@@ -17,20 +17,23 @@ export class MyApp {
     platform: Platform, 
     statusBar: StatusBar, 
     splashScreen: SplashScreen,
-    private admob: AdMob
+    private admob: AdMob,
     ) {
     platform.ready().then(() => {
       
       statusBar.styleDefault();
       splashScreen.hide();
 
-      let options = {
-        adId: 'ca-app-pub-8333742221428550/4840960823',
-      };
+      if (platform.is('cordova')) {
+        let options = {
+          adId: 'ca-app-pub-8333742221428550/4840960823',
+        };
 
-      this.admob.createBanner(options).then(() => {
-        admob.showBanner(8);
-      });
+        this.admob.createBanner(options).then(() => {
+          admob.showBanner(8);
+        });
+      }
+            
 
     });
   }
